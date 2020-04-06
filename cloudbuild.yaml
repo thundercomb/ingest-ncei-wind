@@ -1,11 +1,12 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
   entrypoint: /bin/sh
-  args: -c
-        |
-        sed -e "s/\$PROJECT_ID/$PROJECT_ID/g" app.yaml.tpml > app.yaml
-        cat app.yaml
-        gcloud app deploy
+  args:
+  - '-c'
+  - |
+     sed -e "s/\$PROJECT_ID/$PROJECT_ID/g" app.yaml.tpml > app.yaml
+     cat app.yaml
+     gcloud app deploy
   dir: /workspace/app
 
 timeout: "1600s"
